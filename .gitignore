@@ -4,4 +4,6 @@ db.json
 *.log
 node_modules/
 public/
-.deploy*/
+deploy*/
+themes/
+.deploy_git/
