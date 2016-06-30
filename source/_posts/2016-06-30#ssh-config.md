@@ -2,8 +2,8 @@
 title: 多远程服务的.ssh配置
 date: 2016-06-30 13:24:02
 tags:
-    -linux
-    -mac
+    - linux
+    - mac
 ---
 
 ## ~/.ssh/config
