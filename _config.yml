@@ -70,3 +70,6 @@ theme: maupassant
 deploy:
   type: git
   repo: git@sitec.github.com:ttianjun/ttianjun.github.io.git
+  message: update blog
+  name: ttianjun
+  email: sitec@aliyun.com
