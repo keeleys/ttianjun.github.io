@@ -17,4 +17,17 @@ tags:
 1~3是初始化操作，执行一次即可。在翻译前必须执行第4步同步我的库（这样避免冲突），然后执行5~7既可。
 
 ## 关于gpg
-[提交的时候带上gpg](https://help.github.com/articles/signing-commits-using-gpg/)
+1. 生成gpg(略过)
+2. Telling Git about your GPG key
+```
+gpg --list-secret-keys --keyid-format LONG
+git config --global user.signingkey xxxxxxxxxx(查询到的code)
+```
+
+3. signing-commits-using-gpg
+```
+git config commit.gpgsign true
+git config --global commit.gpgsign true
+```
+
+[signing-commits-using-gpg](https://help.github.com/articles/signing-commits-using-gpg/)
