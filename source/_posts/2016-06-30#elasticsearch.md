@@ -72,3 +72,22 @@ plugin install file:/path/to/my-plugin-1.0.0.zip
 最后参考官网安装完美运行了，Marvel1，3和Marvel2还是有区别的。
 [https://www.elastic.co/downloads/marvel](https://www.elastic.co/downloads/marvel)
 ![marvel-pic](https://dn-keeley.qbox.me/2016-07-01_QQ20160701-0@2x.png)
+
+### 使用
+![2016-07-01_QQ20160701-1@2x.png](https://dn-keeley.qbox.me/2016-07-01_QQ20160701-1@2x.png)
+```
+put http://localhost:9200/megacorp/employee/3
+{
+    "first_name" :  "Douglas",
+    "last_name" :   "Fir",
+    "age" :         35,
+    "about":        "I like to build cabinets",
+    "interests":  [ "forestry" ]
+}
+```
+
+查询
+```
+http://localhost:9200/megacorp/employee/1
+http://localhost:9200/megacorp/employee/_search?q=last_name:Smith
+```
