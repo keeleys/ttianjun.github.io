@@ -69,4 +69,4 @@ theme: maupassant
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:ttianjun/ttianjun.github.io.git
+  repo: git@sitec.github.com:ttianjun/ttianjun.github.io.git

@@ -21,3 +21,14 @@ Host sitec.github.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/sitec
 ```
+
+## 使用例子
+第一个host的远程地址对应
+```
+git clone git@github.com:keeleys/flask_funny.git
+```
+
+第二个host的远程地址对应
+```
+git clone git@sitec.github.com:keeleys/flask_funny.git
+```
