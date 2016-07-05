@@ -1,15 +1,514 @@
-<!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>《四》elasticsearch_获取数据 | tianjun</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/github.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.1.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《四》elasticsearch_获取数据</h1><a id="logo" href="/.">tianjun</a><p class="description">the study</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/timeline/"><i class="fa fa-archive"> timeline</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">《四》elasticsearch_获取数据</h1><div class="post-meta">Jul 1, 2016<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-disqus-identifier="2016/07/01/elasticsearch-3/" href="/2016/07/01/elasticsearch-3/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p>根据id获取<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http <span class="string">get :</span><span class="number">9200</span><span class="regexp">/megacorp/</span>employee/AVWlVVGvcOHvGZKOW1vW</div></pre></td></tr></table></figure></p>
-<p>根据id获取<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http <span class="string">get :</span><span class="number">9200</span><span class="regexp">/megacorp/</span>employee/AVWlVVGvcOHvGZKOW1vW</div></pre></td></tr></table></figure></p>
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>《四》elasticsearch_根据id获取数据 | tianjun</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="tianjun">
+    
+
+    
+    <meta name="description" content="基础根据id获取(id是路径参数)1curl -XGET http://localhost:9200/megacorp/employee/AVW0Wt8KcOHvGZKOW9P4
+返回
+
+完整返回包含索引，类型，id，版本，查找状态和和我们的文档(_source)
+
+1234567891011121314151617&amp;#123;  &quot;_index&quot;: &quot;megacorp&quot;,  &quot;_type&quot;: &quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《四》elasticsearch_根据id获取数据">
+<meta property="og:url" content="http://www.sitec.cc/2016/07/01/elasticsearch-3/index.html">
+<meta property="og:site_name" content="tianjun">
+<meta property="og:description" content="基础根据id获取(id是路径参数)1curl -XGET http://localhost:9200/megacorp/employee/AVW0Wt8KcOHvGZKOW9P4
+返回
+
+完整返回包含索引，类型，id，版本，查找状态和和我们的文档(_source)
+
+1234567891011121314151617&amp;#123;  &quot;_index&quot;: &quot;megacorp&quot;,  &quot;_type&quot;: &quot;">
+<meta property="og:updated_time" content="2016-07-05T02:21:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《四》elasticsearch_根据id获取数据">
+<meta name="twitter:description" content="基础根据id获取(id是路径参数)1curl -XGET http://localhost:9200/megacorp/employee/AVW0Wt8KcOHvGZKOW9P4
+返回
+
+完整返回包含索引，类型，id，版本，查找状态和和我们的文档(_source)
+
+1234567891011121314151617&amp;#123;  &quot;_index&quot;: &quot;megacorp&quot;,  &quot;_type&quot;: &quot;">
+
+    
+    <link rel="alternative" href="/atom.xml" title="tianjun" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="tianjun">tianjun</a></h1>
+				<h2 class="blog-motto">the study</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.sitec.cc">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/01/elasticsearch-3/" title="《四》elasticsearch_根据id获取数据" itemprop="url">《四》elasticsearch_根据id获取数据</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-01T07:23:54.000Z" itemprop="datePublished"> 发表于 2016-07-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤资源-source-filtering"><span class="toc-number">2.</span> <span class="toc-text">(过滤资源)source filtering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一次查询多条-mget"><span class="toc-number">3.</span> <span class="toc-text">一次查询多条(mget)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">4.</span> <span class="toc-text">reference</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>根据id获取(id是路径参数)<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET <span class="symbol">http:</span>/<span class="regexp">/localhost:9200/megacorp</span><span class="regexp">/employee/</span>AVW0Wt8KcOHvGZKOW9P4</div></pre></td></tr></table></figure></p>
+<p>返回</p>
+<blockquote>
+<p>完整返回包含索引，类型，id，版本，查找状态和和我们的文档(_source)</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"_index"</span>: <span class="string">"megacorp"</span>,</div><div class="line">  <span class="attr">"_type"</span>: <span class="string">"employee"</span>,</div><div class="line">  <span class="attr">"_id"</span>: <span class="string">"AVW0Wt8KcOHvGZKOW9P4"</span>,</div><div class="line">  <span class="attr">"_version"</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">"found"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"_source"</span>: &#123;</div><div class="line">    <span class="attr">"first_name"</span>: <span class="string">"sitec"</span>,</div><div class="line">    <span class="attr">"last_name"</span>: <span class="string">"cc"</span>,</div><div class="line">    <span class="attr">"age"</span>: <span class="number">28</span>,</div><div class="line">    <span class="attr">"about"</span>: <span class="string">"I love music"</span>,</div><div class="line">    <span class="attr">"interests"</span>: [</div><div class="line">      <span class="string">"sports"</span>,</div><div class="line">      <span class="string">"music"</span></div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以设置类型为<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET <span class="symbol">http:</span>/<span class="regexp">/localhost:9200/megacorp</span><span class="regexp">/_all/</span>AVW0Wt8KcOHvGZKOW9P4</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>只查询部分字段,可以使用<code>_source</code>参数<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http <span class="string">get :</span><span class="number">9200</span><span class="regexp">/megacorp/</span>employee/AVWlVVGvcOHvGZKOW1vW?_source=last_name</div></pre></td></tr></table></figure></p>
-<p>只查询元数据,数据后面加<code>/source</code><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http <span class="string">get :</span><span class="number">9200</span><span class="regexp">/megacorp/</span>employee<span class="regexp">/AVWlVVGvcOHvGZKOW1vW/</span>_source</div></pre></td></tr></table></figure></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"about"</span>: <span class="string">"I love music"</span>,</div><div class="line">    <span class="attr">"age"</span>: <span class="number">28</span>,</div><div class="line">    <span class="attr">"first_name"</span>: <span class="string">"sitec"</span>,</div><div class="line">    <span class="attr">"interests"</span>: [</div><div class="line">        <span class="string">"sports"</span>,</div><div class="line">        <span class="string">"music"</span></div><div class="line">    ],</div><div class="line">    <span class="attr">"last_name"</span>: <span class="string">"cc"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://www.sitec.cc/2016/07/01/elasticsearch-3/" data-id="ciq7rlmuk0006tv7y6fpnxzzf" class="article-share-link">Share</a><div class="tags"><a href="/tags/elasticsearch/">elasticsearch</a></div><div class="post-nav"><a href="/2016/07/01/elasticsearch-4/" class="pre">《五》elasticsearch_检查是否存在和删除</a><a href="/2016/07/01/elasticsearch-2/" class="next">《三》elasticsearch_插入数据</a></div><div id="disqus_thread"><script>var disqus_shortname = 'sitec';
-var disqus_identifier = '2016/07/01/elasticsearch-3/';
-var disqus_title = '《四》elasticsearch_获取数据';
-var disqus_url = 'http://www.sitec.cc/2016/07/01/elasticsearch-3/';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+<h2 id="过滤资源-source-filtering"><a href="#过滤资源-source-filtering" class="headerlink" title="(过滤资源)source filtering"></a>(过滤资源)source filtering</h2><p>不查询资源，相当于只是判断是否存在了<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET <span class="symbol">http:</span>/<span class="regexp">/localhost:9200/megacorp</span><span class="regexp">/employee/</span>AVW0Wt8KcOHvGZKOW9P4?_source=<span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<p>返回<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"_index"</span>: <span class="string">"megacorp"</span>,</div><div class="line">  <span class="attr">"_type"</span>: <span class="string">"employee"</span>,</div><div class="line">  <span class="attr">"_id"</span>: <span class="string">"AVW0Wt8KcOHvGZKOW9P4"</span>,</div><div class="line">  <span class="attr">"_version"</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">"found"</span>: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>只查询部分字段,逗号分隔.<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET <span class="symbol">http:</span>/<span class="regexp">/localhost:9200/megacorp</span><span class="regexp">/employee/</span>AVW0Wt8KcOHvGZKOW9P4?_source=first_name,last_name</div></pre></td></tr></table></figure></p>
+<p>只查询元数据,数据后面加<code>/source</code><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http get :<span class="number">9200</span><span class="regexp">/megacorp/</span>employee<span class="regexp">/AVW0Wt8KcOHvGZKOW9P4/</span><span class="keyword">source</span></div></pre></td></tr></table></figure></p>
+<p>匹配查询<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">curl</span> -XGET <span class="string">'http://localhost:9200/twitter/tweet/1?_source_include=*.id&amp;_source_exclude=entities'</span></div></pre></td></tr></table></figure></p>
+<p>如果只指定includes ，可以简写成<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">curl</span> -XGET <span class="string">'http://localhost:9200/twitter/tweet/1?_source=*.id,retweeted'</span></div></pre></td></tr></table></figure></p>
+<p>curl -XGET ‘<a href="http://localhost:9200/megacorp/employee/AVW0Wt8KcOHvGZKOW9P4?fields=age" target="_blank" rel="external">http://localhost:9200/megacorp/employee/AVW0Wt8KcOHvGZKOW9P4?fields=age</a>‘</p>
+<h2 id="一次查询多条-mget"><a href="#一次查询多条-mget" class="headerlink" title="一次查询多条(mget)"></a>一次查询多条(mget)</h2><p>根据<code>index,type,id</code>,不同 ，下面三组方式都可以。<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">curl <span class="symbol">'localhost</span>:<span class="number">9200</span>/_mget' -d '&#123;</div><div class="line">    <span class="string">"docs"</span> : [</div><div class="line">        &#123;</div><div class="line">            <span class="string">"_index"</span> : "<span class="type">test</span><span class="string">",</span></div><div class="line">            "_type<span class="string">" : "</span><span class="keyword">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">1</span><span class="string">"</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            "_index<span class="string">" : "</span>test<span class="string">",</span></div><div class="line">            "_type<span class="string">" : "</span><span class="keyword">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">2</span><span class="string">"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;'</div></pre></td></tr></table></figure></p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">curl <span class="string">'localhost:9200/test/_mget'</span> -d <span class="string">'&#123;</span></div><div class="line">    "docs<span class="string">" : [</span></div><div class="line">        &#123;</div><div class="line">            "_type<span class="string">" : "</span><span class="built_in">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">1</span><span class="string">"</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            "_type<span class="string">" : "</span><span class="built_in">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">2</span><span class="string">"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">curl <span class="symbol">'localhost</span>:<span class="number">9200</span>/test/<span class="keyword">type</span>/_mget' -d '&#123;</div><div class="line">    <span class="string">"docs"</span> : [</div><div class="line">        &#123;</div><div class="line">            <span class="string">"_id"</span> : "1"</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="string">"_id"</span> : "2"</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+<p>第三种还能简写成<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl <span class="symbol">'localhost</span>:<span class="number">9200</span>/test/<span class="class"><span class="keyword">type</span><span class="title">/_mget</span>' <span class="title">-d</span> '</span>&#123;</div><div class="line">    <span class="string">"ids"</span> : [<span class="string">"1"</span>, <span class="string">"2"</span>]</div><div class="line">&#125;'</div></pre></td></tr></table></figure></p>
+<p>如果是查询所有type，可以简写成如下，这种情况如果多个类型有相同的id值，只返回第一个匹配的。<br><figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl <span class="string">'localhost:9200/test/_mget'</span> -d <span class="string">'&#123;</span></div><div class="line">    "ids<span class="string">" : ["</span><span class="number">1</span><span class="string">", "</span><span class="number">1</span><span class="string">"]</span></div><div class="line">&#125;'</div></pre></td></tr></table></figure></p>
+<p>多条查询的资源过滤写法<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">curl <span class="symbol">'localhost</span>:<span class="number">9200</span>/_mget' -d '&#123;</div><div class="line">    <span class="string">"docs"</span> : [</div><div class="line">        &#123;</div><div class="line">            <span class="string">"_index"</span> : "<span class="type">test</span><span class="string">",</span></div><div class="line">            "_type<span class="string">" : "</span><span class="keyword">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">1</span><span class="string">",</span></div><div class="line">            "_source<span class="string">" : false</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            "_index<span class="string">" : "</span>test<span class="string">",</span></div><div class="line">            "_type<span class="string">" : "</span><span class="keyword">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">2</span><span class="string">",</span></div><div class="line">            "_source<span class="string">" : ["</span>field3<span class="string">", "</span>field4<span class="string">"]</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            "_index<span class="string">" : "</span>test<span class="string">",</span></div><div class="line">            "_type<span class="string">" : "</span><span class="keyword">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">3</span><span class="string">",</span></div><div class="line">            "_source<span class="string">" : &#123;</span></div><div class="line">                "include<span class="string">": ["</span>user<span class="string">"],</span></div><div class="line">                "exclude<span class="string">": ["</span>user.location<span class="string">"]</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;'</div></pre></td></tr></table></figure></p>
+<p>指定routing查询<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">curl <span class="symbol">'localhost</span>:<span class="number">9200</span>/_mget?routing=key1' -d '&#123;</div><div class="line">    <span class="string">"docs"</span> : [</div><div class="line">        &#123;</div><div class="line">            <span class="string">"_index"</span> : "<span class="type">test</span><span class="string">",</span></div><div class="line">            "_type<span class="string">" : "</span><span class="keyword">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">1</span><span class="string">",</span></div><div class="line">            "_routing<span class="string">" : "</span>key2<span class="string">"</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            "_index<span class="string">" : "</span>test<span class="string">",</span></div><div class="line">            "_type<span class="string">" : "</span><span class="keyword">type</span><span class="string">",</span></div><div class="line">            "_id<span class="string">" : "</span><span class="number">2</span><span class="string">"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;'</div></pre></td></tr></table></figure></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#_source" target="_blank" rel="external">https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#_source</a><br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-get.html" target="_blank" rel="external">https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-get.html</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.sitec.cc/2016/07/01/elasticsearch-3/" data-title="《四》elasticsearch_根据id获取数据 | tianjun" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/07/01/elasticsearch-4/" title="《五》elasticsearch_检查是否存在和删除">
+  <strong>上一篇：</strong><br/>
+  <span>
+  《五》elasticsearch_检查是否存在和删除</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/07/01/elasticsearch-2/"  title="《三》elasticsearch_索引操作">
+ <strong>下一篇：</strong><br/> 
+ <span>《三》elasticsearch_索引操作
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤资源-source-filtering"><span class="toc-number">2.</span> <span class="toc-text">(过滤资源)source filtering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一次查询多条-mget"><span class="toc-number">3.</span> <span class="toc-text">一次查询多条(mget)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">4.</span> <span class="toc-text">reference</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/elasticsearch/" title="elasticsearch">elasticsearch<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mac/" title="mac">mac<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="tianjun">tianjun</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'sitec';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//sitec.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://www.sitec.cc"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/elasticsearch/" style="font-size: 15px;">elasticsearch</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/html5/" style="font-size: 15px;">html5</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/github/" style="font-size: 15px;">github</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/elasticsearch-7/">《八》elasticsearch_DSL搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/elasticsearch-6/">《七》elasticsearch_url搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-5/">《六》elasticsearch_更新和版本控制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-4/">《五》elasticsearch_检查是否存在和删除</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-3/">《四》elasticsearch_获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-2/">《三》elasticsearch_插入数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/github-star/">github-star</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-bash/">《二》elasticsearch_基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/elasticsearch/">《一》elasticsearch_安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/github-request/">github协作开发流程</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//sitec.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="https://www.elastic.co" title="elastic" target="_blank">elastic</a><ul></ul><a href="http://jacokoo.github.io/sleetjs/" title="sleetjs" target="_blank">sleetjs</a></div></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

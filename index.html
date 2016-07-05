@@ -1,8 +1,1026 @@
-<!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>tianjun | the study</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/github.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.1.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">tianjun</h1><a id="logo" href="/.">tianjun</a><p class="description">the study</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/timeline/"><i class="fa fa-archive"> timeline</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h2 class="post-title"><a href="/2016/07/04/elasticsearch-7/">《八》elasticsearch_DSL搜索</a></h2><div class="post-meta">2016-07-04</div><a data-disqus-identifier="2016/07/04/elasticsearch-7/" href="/2016/07/04/elasticsearch-7/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p>example<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">curl -XGET <span class="symbol">'http</span>://localhost:<span class="number">9200</span>/twitter/tweet/_search' -d '&#123;</div><div class="line">    <span class="string">"query"</span> : &#123;</div><div class="line">        <span class="string">"term"</span> : &#123; "<span class="type">user</span><span class="string">" : "</span>kimchy<span class="string">" &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">'</span></div></pre></td></tr></table></figure></p>
-<h3 id="query"><a href="#query" class="headerlink" title="query"></a>query</h3><p>The query element within the search request body<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"query"</span> : &#123;</div><div class="line">        <span class="attr">"term"</span> : &#123; <span class="attr">"user"</span> : <span class="string">"kimchy"</span> &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2016/07/04/elasticsearch-7/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/07/04/elasticsearch-6/">《七》elasticsearch_url搜索</a></h2><div class="post-meta">2016-07-04</div><a data-disqus-identifier="2016/07/04/elasticsearch-6/" href="/2016/07/04/elasticsearch-6/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p>example<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ curl -XPOST <span class="symbol">'http</span>://localhost:<span class="number">9200</span>/twitter/tweet?routing=kimchy' -d '&#123;</div><div class="line">    <span class="string">"user"</span> : "<span class="type">kimchy</span><span class="string">",</div><div class="line">    "</span>postDate<span class="string">" : "</span><span class="number">2009</span>-<span class="number">11</span>-<span class="number">15</span>T14:<span class="number">12</span>:<span class="number">12</span><span class="string">",</div><div class="line">    "</span>message<span class="string">" : "</span>trying <span class="keyword">out</span> Elasticsearch<span class="string">"</div><div class="line">&#125;'</span></div></pre></td></tr></table></figure></p>
-<p>search on all documents across all types within the twitter index<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">curl</span> -XGET <span class="string">'http://localhost:9200/twitter/_search?q=user:kimchy'</span></div></pre></td></tr></table></figure></p>
-<p>search within specific types:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET 'http://localhost:9200/twitter/tweet,<span class="keyword">user</span>/_search?q=<span class="keyword">user</span>:kimchy'</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2016/07/04/elasticsearch-6/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/07/01/elasticsearch-5/">《六》elasticsearch_更新和版本控制</a></h2><div class="post-meta">2016-07-01</div><a data-disqus-identifier="2016/07/01/elasticsearch-5/" href="/2016/07/01/elasticsearch-5/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h2 id="关于version"><a href="#关于version" class="headerlink" title="关于version"></a>关于version</h2><p>在post put 等操作中，我们可以看到返回的json都有<code>_version</code>字段，elasticsearch就是根据version来进行并发处理的，每次操作数据version都会自增一次，如果其他程序修改了数据，那么当前数据拿到的版本肯定是低于最新版本的，低于最新版本的更新将不会成功，这样达到事物控制。</p>
-<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>先查询一个数据看看，得到版本号是3.<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">http get :9200/megacorp/employee/1</div><div class="line">&#123;</div><div class="line">  "_index": "megacorp",</div><div class="line">  "_type": "employee",</div><div class="line">  "_id": "1",</div><div class="line">  "_version": 3,</div><div class="line">  "found": true,</div><div class="line">  "_source": &#123;</div><div class="line">    "first_name": "John",</div><div class="line">    "last_name": "Smith",</div><div class="line">    "age": 25,</div><div class="line">    "about": "I love to go rock climbing",</div><div class="line">    "interests": [</div><div class="line">      "sports",</div><div class="line">      "music"</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2016/07/01/elasticsearch-5/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/07/01/elasticsearch-4/">《五》elasticsearch_检查是否存在和删除</a></h2><div class="post-meta">2016-07-01</div><a data-disqus-identifier="2016/07/01/elasticsearch-4/" href="/2016/07/01/elasticsearch-4/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p>使用head类型的访问方式查询是否存在</p>
-<p>存在的时候<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; http head :9200/megacorp/employee/AVWlVVGvcOHvGZKOW1vW                                                                            source [661efed] untracked</div><div class="line">HTTP/1.1 200 OK</div><div class="line">Content-Length: 0</div><div class="line">Content-Type: text/plain; charset=UTF-8</div></pre></td></tr></table></figure></p>
-<p>不存在的时候<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; http head :9200/megacorp/employee/AVWlVVGvcOHvGZKOW1vW2                                                                  source [661efed] modified untracked</div><div class="line">HTTP/1.1 404 Not Found</div><div class="line">Content-Length: 0</div><div class="line">Content-Type: text/plain; charset=UTF-8</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2016/07/01/elasticsearch-4/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/07/01/elasticsearch-3/">《四》elasticsearch_获取数据</a></h2><div class="post-meta">2016-07-01</div><a data-disqus-identifier="2016/07/01/elasticsearch-3/" href="/2016/07/01/elasticsearch-3/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><p>根据id获取<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http <span class="string">get :</span><span class="number">9200</span><span class="regexp">/megacorp/</span>employee/AVWlVVGvcOHvGZKOW1vW</div></pre></td></tr></table></figure></p>
-<p>根据id获取<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http <span class="string">get :</span><span class="number">9200</span><span class="regexp">/megacorp/</span>employee/AVWlVVGvcOHvGZKOW1vW</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2016/07/01/elasticsearch-3/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/07/01/elasticsearch-2/">《三》elasticsearch_插入数据</a></h2><div class="post-meta">2016-07-01</div><a data-disqus-identifier="2016/07/01/elasticsearch-2/" href="/2016/07/01/elasticsearch-2/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h2 id="关于index的操作api"><a href="#关于index的操作api" class="headerlink" title="关于index的操作api"></a>关于index的操作api</h2><h3 id="put添加的方式"><a href="#put添加的方式" class="headerlink" title="put添加的方式"></a>put添加的方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">PUT /&#123;index&#125;/&#123;type&#125;/&#123;id&#125;</div><div class="line"></div><div class="line">&#123;</div><div class="line">  "field": "value",</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></div><p class="readmore"><a href="/2016/07/01/elasticsearch-2/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/07/01/github-star/">github-star</a></h2><div class="post-meta">2016-07-01</div><a data-disqus-identifier="2016/07/01/github-star/" href="/2016/07/01/github-star/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul></div><p class="readmore"><a href="/2016/07/01/github-star/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/07/01/elasticsearch-bash/">《二》elasticsearch_基本概念</a></h2><div class="post-meta">2016-07-01</div><a data-disqus-identifier="2016/07/01/elasticsearch-bash/" href="/2016/07/01/elasticsearch-bash/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">elational</span> DB -&gt;</span> D<span class="function"><span class="title">atabases</span> -&gt;</span> T<span class="function"><span class="title">ables</span> -&gt;</span> Rows</div><div class="line">E<span class="function"><span class="title">lasticsearch</span> -&gt;</span> _<span class="function"><span class="title">index</span>   -&gt;</span> _<span class="function"><span class="title">type</span>  -&gt;</span> Documents</div></pre></td></tr></table></figure></div><p class="readmore"><a href="/2016/07/01/elasticsearch-bash/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/06/30/elasticsearch/">《一》elasticsearch_安装</a></h2><div class="post-meta">2016-06-30</div><a data-disqus-identifier="2016/06/30/elasticsearch/" href="/2016/06/30/elasticsearch/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h2 id="理论-amp-作用"><a href="#理论-amp-作用" class="headerlink" title="理论&amp;作用"></a>理论&amp;作用</h2><p>Elasticsearch是一个实时分布式搜索和分析引擎。用于全文搜索、结构化搜索、分析以及将这三者混合使用，支持通过 HTTP 请求，使用 JSON 进行数据索引。</p></div><p class="readmore"><a href="/2016/06/30/elasticsearch/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/06/30/github-request/">github协作开发流程</a></h2><div class="post-meta">2016-06-30</div><a data-disqus-identifier="2016/06/30/github-request/" href="/2016/06/30/github-request/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h2 id="Pull-Request流程"><a href="#Pull-Request流程" class="headerlink" title="Pull Request流程"></a>Pull Request流程</h2><ol></div><p class="readmore"><a href="/2016/06/30/github-request/">Read More</a></p></div><nav class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a></nav><script id="dsq-count-scr" src="//sitec.disqus.com/count.js" async></script></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://www.sitec.cc"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/elasticsearch/" style="font-size: 15px;">elasticsearch</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/html5/" style="font-size: 15px;">html5</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/github/" style="font-size: 15px;">github</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/elasticsearch-7/">《八》elasticsearch_DSL搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/elasticsearch-6/">《七》elasticsearch_url搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-5/">《六》elasticsearch_更新和版本控制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-4/">《五》elasticsearch_检查是否存在和删除</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-3/">《四》elasticsearch_获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-2/">《三》elasticsearch_插入数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/github-star/">github-star</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/elasticsearch-bash/">《二》elasticsearch_基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/elasticsearch/">《一》elasticsearch_安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/github-request/">github协作开发流程</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//sitec.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="https://www.elastic.co" title="elastic" target="_blank">elastic</a><ul></ul><a href="http://jacokoo.github.io/sleetjs/" title="sleetjs" target="_blank">sleetjs</a></div></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>tianjun</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="tianjun">
+    
+
+    
+    <meta property="og:type" content="website">
+<meta property="og:title" content="tianjun">
+<meta property="og:url" content="http://www.sitec.cc/index.html">
+<meta property="og:site_name" content="tianjun">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tianjun">
+
+    
+    <link rel="alternative" href="/atom.xml" title="tianjun" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="tianjun">tianjun</a></h1>
+				<h2 class="blog-motto">the study</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.sitec.cc">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/04/elasticsearch-9/" title="《九》elasticsearch_DSL搜索" itemprop="url">《九》elasticsearch_DSL搜索</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-04T01:34:19.000Z" itemprop="datePublished"> 发表于 2016-07-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">curl -XDELETE <span class="string">http:</span><span class="comment">//localhost:9200/my_index</span></div><div class="line"></div><div class="line">curl -XPUT <span class="string">http:</span><span class="comment">//localhost:9200/my_index -d'&#123; "settings": &#123; "number_of_shards": 1 &#125;&#125;'</span></div><div class="line"></div><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_bulk -d '</span></div><div class="line">&#123; <span class="string">"index"</span>: &#123; <span class="string">"_id"</span>: <span class="number">1</span> &#125;&#125;</div><div class="line">&#123; <span class="string">"title"</span>: <span class="string">"The quick brown fox"</span>: <span class="string">'site'</span>,<span class="number">1</span>&#125;</div><div class="line">&#123; <span class="string">"index"</span>: &#123; <span class="string">"_id"</span>: <span class="number">2</span> &#125;&#125;</div><div class="line">&#123; <span class="string">"title"</span>: <span class="string">"The quick brown fox jumps over the lazy dog"</span> :<span class="string">'site'</span>,<span class="number">2</span>&#125;</div><div class="line">&#123; <span class="string">"index"</span>: &#123; <span class="string">"_id"</span>: <span class="number">3</span> &#125;&#125;</div><div class="line">&#123; <span class="string">"title"</span>: <span class="string">"The quick brown fox jumps over the quick dog"</span> :<span class="string">'site'</span>,<span class="number">3</span>&#125;</div><div class="line">&#123; <span class="string">"index"</span>: &#123; <span class="string">"_id"</span>: <span class="number">4</span> &#125;&#125;</div><div class="line">&#123; <span class="string">"title"</span>: <span class="string">"Brown fox brown dog"</span> :<span class="string">'site'</span>,<span class="number">4</span>&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+<h2 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h2><ul>
+<li><p><code>term</code>, 精确匹配查询值,数字，日期，布尔值或没有经过分析的字符串</p>
+<blockquote>
+<p>这里如果查询<code>QUICK</code> 或者<code>quic</code>都查不出来，只有单词完全匹配才行，因为term的搜索词没有经过分析(<code>not_analyzed</code>)</p>
+</blockquote>
+  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"term"</span>: &#123; <span class="string">"title"</span>: <span class="string">"quick"</span> &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>terms</code>,跟term类似，满足部分也能搜索到，满足的越多分值排行越高</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"terms"</span>: &#123;</div><div class="line">            <span class="string">"title"</span>: [ <span class="string">"quick"</span>, <span class="string">"fox"</span>, <span class="string">"jumps"</span>,<span class="string">"over"</span> ]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>range</code>,过滤允许我们按照指定范围查找一批数据：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"range"</span>: &#123;</div><div class="line">            <span class="string">"site"</span>: &#123;</div><div class="line">                <span class="string">"gte"</span>:  <span class="number">1</span>,</div><div class="line">                <span class="string">"lt"</span>:   <span class="number">3</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>exists,missing</code>,过滤可以用于查找文档中是否包含指定字段或没有某个字段,类似于SQL语句中的IS_NULL条件</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"exists"</span>:   &#123;</div><div class="line">            <span class="string">"field"</span>:    <span class="string">"title"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>bool</p>
+<ul>
+<li><code>must</code> 查询指定文档一定要被包含</li>
+<li><code>must_not</code> 查询指定文档一定不要被包含</li>
+<li><p><code>should</code>  查询指定文档，有则可以为文档相关性加分</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"bool"</span>: &#123;</div><div class="line">            <span class="string">"must"</span>:     &#123; <span class="string">"term"</span>: &#123; <span class="string">"title"</span>: <span class="string">"quick"</span> &#125;&#125;,</div><div class="line">            <span class="string">"must_not"</span>: &#123; <span class="string">"term"</span>: &#123; <span class="string">"title"</span>:    <span class="string">"lazy"</span>  &#125;&#125;,</div><div class="line">            <span class="string">"should"</span>: [</div><div class="line">                        &#123; <span class="string">"term"</span>: &#123; <span class="string">"title"</span>: <span class="string">"jumps"</span>   &#125;&#125;,</div><div class="line">                        &#123; <span class="string">"term"</span>: &#123; <span class="string">"title"</span>:  <span class="string">"jumps"</span>   &#125;&#125;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="带过滤的查询语句"><a href="#带过滤的查询语句" class="headerlink" title="带过滤的查询语句"></a>带过滤的查询语句</h2><blockquote>
+<p>search API中只能包含 query 语句，所以我们需要用 filtered 来同时包含 “query” 和 “filter” 子句,然后在外层再加入 query 的上下文关系</p>
+</blockquote>
+<p>这条语句，查询出title有关键字quick的文档，并且过滤出site=2的那条结果。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"filtered"</span>: &#123;</div><div class="line">            <span class="string">"query"</span>:  &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>: <span class="string">"quick"</span> &#125;&#125;,</div><div class="line">            <span class="string">"filter"</span>: &#123; <span class="string">"term"</span>: &#123; <span class="string">"site"</span>: <span class="string">"2"</span> &#125;&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure></p>
+<p>如果你查询全部文档来匹配过滤，可以省略query子句<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"filtered"</span>: &#123;</div><div class="line">            <span class="string">"filter"</span>: &#123; <span class="string">"term"</span>: &#123; <span class="string">"site"</span>: <span class="string">"2"</span> &#125;&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure></p>
+<h2 id="查询排序"><a href="#查询排序" class="headerlink" title="查询排序"></a>查询排序</h2><blockquote>
+<p>排序方式为<code>_score</code>是指根据查询分数排序，默认是<code>desc</code>倒序，其他排序方式默认是<code>asc</code><br>就跟sql的排序一样，多个条件的排序，前面的参考结果一致就比较后面的</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"match"</span>:   &#123;</div><div class="line">            <span class="string">"title"</span>:    <span class="string">"QUICK"</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="string">"sort"</span>: [</div><div class="line">        &#123;<span class="string">"site"</span>: <span class="string">"desc"</span>&#125;,</div><div class="line">        <span class="string">"_score"</span></div><div class="line">    ]</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+<p>为多值字段(比如数组字段)排序，为了提取其中一个数值，使用min, max, avg 或 sum这些模式来进行比较，例如<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="string">"sort"</span>: &#123;</div><div class="line">    <span class="string">"dates"</span>: &#123;</div><div class="line">        <span class="string">"order"</span>: <span class="string">"asc"</span>,</div><div class="line">        <span class="string">"mode"</span>:  <span class="string">"min"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="全文检索"><a href="#全文检索" class="headerlink" title="全文检索"></a>全文检索</h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>相关度(Relevance)<br>根据文档与查询的相关程度对结果集进行排序的能力。相关度可以使用TF/IDF、地理位置相近程度、模糊相似度或其他算法计算。</li>
+<li>分析(Analysis)<br>将一段文本转换为一组唯一的、标准化了的标记(token)，用以创建倒排索引，查询倒排索引。</li>
+</ul>
+<h3 id="查询分析"><a href="#查询分析" class="headerlink" title="查询分析"></a>查询分析</h3><ul>
+<li>如果检索一个’date’或’integer’字段，它们会把查询语句作为日期或者整数格式数据。</li>
+<li>如果检索一个准确值(‘not_analyzed’)字符串字段，它们会把整个查询语句作为一个短语。</li>
+<li>如果检索一个全文(‘analyzed’)字段，查询会先用适当的解析器解析查询语句，产生需要查询的短语列表。然后对列表中的每个短语执行低级查询，合并查询结果，得到最终的文档相关度。</li>
+</ul>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="title">curl</span> -<span class="type">XGET</span> http://localhost:<span class="number">9200</span>/my_index/my_<span class="keyword">type</span>/_validate/query?explain -d'</div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"bool"</span>: &#123;</div><div class="line">            <span class="string">"should"</span>: [</div><div class="line">                &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>:         <span class="string">"QUERY."</span>&#125;&#125;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+<h3 id="match-匹配查询"><a href="#match-匹配查询" class="headerlink" title="match,匹配查询"></a>match,匹配查询</h3><ul>
+<li><p><code>match</code> 查询所有,查询前会先将查询字符串分析,</p>
+<blockquote>
+<p>如果用match下指定了一个确切值，在遇到数字，日期，布尔值或者not_analyzed 的字符串时，它将为你搜索你给定的值：</p>
+</blockquote>
+  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"match"</span>:   &#123;</div><div class="line">            <span class="string">"title"</span>:    <span class="string">"QUICK"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>多词查询,任意满足都可以</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="title">curl</span> -<span class="type">XPOST</span> http://localhost:<span class="number">9200</span>/my_index/my_<span class="keyword">type</span>/_search -d'</div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"match"</span>: &#123;</div><div class="line">            <span class="string">"title"</span>: <span class="string">"BROWN DOG!"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+</li>
+<li><p>多词查询,必需两者都满足</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="title">curl</span> -<span class="type">XPOST</span> http://localhost:<span class="number">9200</span>/my_index/my_<span class="keyword">type</span>/_search -d'</div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"match"</span>: &#123;</div><div class="line">            <span class="string">"title"</span>: &#123;</div><div class="line">            <span class="string">"query"</span>:    <span class="string">"BROWN DOG!"</span>,</div><div class="line">            <span class="string">"operator"</span>: <span class="string">"and"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>multi_match</code>,同时搜索多个字段</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;</div><div class="line">        <span class="string">"multi_match"</span>:   &#123;</div><div class="line">            <span class="string">"query"</span>:    <span class="string">"quick!"</span>,</div><div class="line">            <span class="string">"fields"</span>:   [ <span class="string">"title"</span> ]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>组合查询</p>
+<blockquote>
+<p>boost值为默认值1,boost的作用是提高分值</p>
+</blockquote>
+ <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="string">http:</span><span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"query"</span>: &#123;</div><div class="line">    <span class="string">"bool"</span>: &#123;</div><div class="line">      <span class="string">"must"</span>:     &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>: <span class="string">"quick"</span> &#125;&#125;,</div><div class="line">      <span class="string">"must_not"</span>: &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>: <span class="string">"lazy"</span>  &#125;&#125;,</div><div class="line">      <span class="string">"should"</span>: [</div><div class="line">                  &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>: <span class="string">"brown"</span> &#125;&#125;,</div><div class="line">                  &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>: &#123;<span class="string">"query"</span>:<span class="string">"dog"</span> ,<span class="string">"boost"</span>: <span class="number">3</span>&#125;&#125;&#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;<span class="string">'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>控制精度的组合查询,</p>
+<blockquote>
+<p><code>minimum_should_match</code>数值2，代表三个should条件里面需要匹配任意2个.也可以设置成百分比</p>
+</blockquote>
+  <figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">curl -XPOST http:<span class="comment">//localhost:9200/my_index/my_type/_search?pretty -d '</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"query"</span>: &#123;</div><div class="line">    <span class="string">"bool"</span>: &#123;</div><div class="line">      <span class="string">"should"</span>: [</div><div class="line">        &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>: <span class="string">"brown"</span> &#125;&#125;,</div><div class="line">        &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>: <span class="string">"fox"</span>   &#125;&#125;,</div><div class="line">        &#123; <span class="string">"match"</span>: &#123; <span class="string">"title"</span>: <span class="string">"dog"</span>   &#125;&#125;</div><div class="line">      ],</div><div class="line">      <span class="string">"minimum_should_match"</span>: <span class="number">2</span> <span class="params">&lt;<span class="number">1</span>&gt;</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">min_score</td>
+<td style="text-align:left">a _score less than the minimum specified in min_score</td>
+</tr>
+<tr>
+<td style="text-align:left">version</td>
+<td style="text-align:left">Returns a version for each search hit.</td>
+</tr>
+<tr>
+<td style="text-align:left">explain</td>
+<td style="text-align:left">Enables explanation for each hit on how its score was computed.</td>
+</tr>
+</tbody>
+</table>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/04/elasticsearch-9/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/04/elasticsearch-8/" title="《八》elasticsearch_url搜索" itemprop="url">《八》elasticsearch_url搜索</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-04T01:23:07.000Z" itemprop="datePublished"> 发表于 2016-07-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>example<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ curl -XPOST <span class="symbol">'http</span>://localhost:<span class="number">9200</span>/twitter/tweet?routing=kimchy' -d '&#123;</div><div class="line">    <span class="string">"user"</span> : "<span class="type">kimchy</span><span class="string">",</div><div class="line">    "</span>postDate<span class="string">" : "</span><span class="number">2009</span>-<span class="number">11</span>-<span class="number">15</span>T14:<span class="number">12</span>:<span class="number">12</span><span class="string">",</div><div class="line">    "</span>message<span class="string">" : "</span>trying <span class="keyword">out</span> Elasticsearch<span class="string">"</div><div class="line">&#125;'</span></div></pre></td></tr></table></figure></p>
+<p>在twitter上查询所有类型<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">curl</span> -XGET <span class="string">'http://localhost:9200/twitter/_search?q=user:kimchy'</span></div></pre></td></tr></table></figure></p>
+<p>在twitter上查询指定的类型:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET 'http://localhost:9200/twitter/tweet,<span class="keyword">user</span>/_search?q=<span class="keyword">user</span>:kimchy'</div></pre></td></tr></table></figure></p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/07/04/elasticsearch-8/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/04/elasticsearch-8/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/03/elasticsearch-7/" title="《七》elasticsearch_批量操作的api" itemprop="url">《七》elasticsearch_批量操作的api</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-03T02:30:24.000Z" itemprop="datePublished"> 发表于 2016-07-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>一次发送多条命令可以有效减少请求次数，提高效率</p>
+</blockquote>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml">/_bulk, /</span><span class="template-variable">&#123;index&#125;</span><span class="xml">/_bulk, </span><span class="template-variable">&#123;index&#125;</span><span class="xml">/</span><span class="template-variable">&#123;type&#125;</span><span class="xml">/_bulk</span></div></pre></td></tr></table></figure>
+<p>请求体,action有<code>index, create, delete, update</code>,<br>index和create在下一行跟上要索引的doc<br>update在下一行跟上doc或script<br>delete不需要跟任何<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">action_and_meta_data<span class="string">\n</span></div><div class="line">optional_source<span class="string">\n</span></div><div class="line">action_and_meta_data<span class="string">\n</span></div><div class="line">optional_source<span class="string">\n</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123; <span class="attr">"index"</span> : &#123; <span class="attr">"_index"</span> : <span class="string">"test"</span>, <span class="attr">"_type"</span> : <span class="string">"type1"</span>, <span class="attr">"_id"</span> : <span class="string">"1"</span> &#125; &#125;</div><div class="line">&#123; <span class="attr">"field1"</span> : <span class="string">"value1"</span> &#125;</div><div class="line">&#123; <span class="attr">"delete"</span> : &#123; <span class="attr">"_index"</span> : <span class="string">"test"</span>, <span class="attr">"_type"</span> : <span class="string">"type1"</span>, <span class="attr">"_id"</span> : <span class="string">"2"</span> &#125; &#125;</div><div class="line">&#123; <span class="attr">"create"</span> : &#123; <span class="attr">"_index"</span> : <span class="string">"test"</span>, <span class="attr">"_type"</span> : <span class="string">"type1"</span>, <span class="attr">"_id"</span> : <span class="string">"3"</span> &#125; &#125;</div><div class="line">&#123; <span class="attr">"field1"</span> : <span class="string">"value3"</span> &#125;</div><div class="line">&#123; <span class="attr">"update"</span> : &#123;<span class="attr">"_id"</span> : <span class="string">"1"</span>, <span class="attr">"_type"</span> : <span class="string">"type1"</span>, <span class="attr">"_index"</span> : <span class="string">"index1"</span>&#125; &#125;</div><div class="line">&#123; <span class="attr">"doc"</span> : &#123;<span class="attr">"field2"</span> : <span class="string">"value2"</span>&#125; &#125;</div></pre></td></tr></table></figure>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>给 <code>countries/country</code>批量添加文档<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">curl -XPOST http://<span class="number">127.0.0.1:9200</span>/countries/country/_bulk -d '&#123;<span class="string">"index"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"1"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"name"</span>: <span class="string">"中国"</span>,<span class="string">"capital"</span>: <span class="string">"北京"</span>&#125;</div><div class="line">&#123;<span class="string">"index"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"2"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"name"</span>: <span class="string">"美国"</span>,<span class="string">"capital"</span>: <span class="string">"华盛顿"</span>&#125;</div><div class="line">&#123;<span class="string">"index"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"3"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"name"</span>: <span class="string">"日本"</span>,<span class="string">"capital"</span>: <span class="string">"东京"</span>&#125;</div><div class="line">&#123;<span class="string">"index"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"4"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"name"</span>: <span class="string">"澳大利亚"</span>,<span class="string">"capital"</span>: <span class="string">"悉尼"</span>&#125;</div><div class="line">&#123;<span class="string">"index"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"5"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"name"</span>: <span class="string">"印度"</span>,<span class="string">"capital"</span>: <span class="string">"新德里"</span>&#125;</div><div class="line">&#123;<span class="string">"index"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"6"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"name"</span>: <span class="string">"韩国"</span>,<span class="string">"capital"</span>: <span class="string">"首尔"</span>&#125;'</div></pre></td></tr></table></figure></p>
+<p>查询刚才插入的是否ok,?pretty美化输出的json<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="string">http:</span><span class="comment">//127.0.0.1:9200/countries/country/_search\?pretty</span></div></pre></td></tr></table></figure></p>
+<p>添加2条，修改2条(一条文本，一条脚本)，删除一条<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -XPOST http://<span class="number">127.0.0.1:9200</span>/countries/country/_bulk -d '&#123;<span class="string">"index"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"7"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"name"</span>: <span class="string">"新加坡"</span>,<span class="string">"capital"</span>: <span class="string">"渥太华"</span>&#125;</div><div class="line">&#123;<span class="string">"create"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"8"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"name"</span>: <span class="string">"德国"</span>,<span class="string">"capital"</span>: <span class="string">"柏林"</span>&#125;</div><div class="line">&#123;<span class="string">"update"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"1"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"doc"</span>: &#123;<span class="string">"name"</span>: <span class="string">"法国"</span>,<span class="string">"capital"</span>: <span class="string">"巴黎"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"update"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"3"</span>&#125;&#125;</div><div class="line">&#123;<span class="string">"script"</span>: <span class="string">"ctx._source.name = \"</span>法国\<span class="string">";ctx._source.capital = \"</span>巴黎\<span class="string">""</span>&#125;'</div><div class="line">&#123;<span class="string">"delete"</span>:&#123;<span class="string">"_id"</span>:<span class="string">"2"</span>&#125;&#125;</div></pre></td></tr></table></figure></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/03/elasticsearch-7/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/01/elasticsearch-5/" title="《六》elasticsearch_更新和版本控制" itemprop="url">《六》elasticsearch_更新和版本控制</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-01T08:05:08.000Z" itemprop="datePublished"> 发表于 2016-07-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="关于version"><a href="#关于version" class="headerlink" title="关于version"></a>关于version</h2><p>在post put 等操作中，我们可以看到返回的json都有<code>_version</code>字段，elasticsearch就是根据version来进行并发处理的，每次操作数据version都会自增一次，如果其他程序修改了数据，那么当前数据拿到的版本肯定是低于最新版本的，低于最新版本的更新将不会成功，这样达到事物控制。</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>先查询一个数据看看，得到版本号是3.<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET <span class="symbol">http:</span>/<span class="regexp">/localhost:9200/megacorp</span><span class="regexp">/employee/</span><span class="number">1</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"_index"</span>: <span class="string">"megacorp"</span>,</div><div class="line">  <span class="attr">"_type"</span>: <span class="string">"employee"</span>,</div><div class="line">  <span class="attr">"_id"</span>: <span class="string">"1"</span>,</div><div class="line">  <span class="attr">"_version"</span>: <span class="number">3</span>,</div><div class="line">  <span class="attr">"found"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"_source"</span>: &#123;</div><div class="line">    <span class="attr">"first_name"</span>: <span class="string">"John"</span>,</div><div class="line">    <span class="attr">"last_name"</span>: <span class="string">"Smith"</span>,</div><div class="line">    <span class="attr">"age"</span>: <span class="number">25</span>,</div><div class="line">    <span class="attr">"about"</span>: <span class="string">"I love to go rock climbing"</span>,</div><div class="line">    <span class="attr">"interests"</span>: [</div><div class="line">      <span class="string">"sports"</span>,</div><div class="line">      <span class="string">"music"</span></div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/07/01/elasticsearch-5/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/01/elasticsearch-5/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/01/elasticsearch-4/" title="《五》elasticsearch_检查是否存在和删除" itemprop="url">《五》elasticsearch_检查是否存在和删除</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-01T07:30:14.000Z" itemprop="datePublished"> 发表于 2016-07-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="head判断存在"><a href="#head判断存在" class="headerlink" title="head判断存在"></a>head判断存在</h2><blockquote>
+<p>使用head类型的访问方式查询是否存在,测试的时候加上<code>-i</code>参数,根据http的返回码进行判断的，404不存在，200存在。</p>
+</blockquote>
+<p>存在的时候<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl -XHEAD -i http://localhost:9200/megacorp/employee/AVW0Wt8KcOHvGZKOW9P4                                                                        </div><div class="line">HTTP/1.1 200 OK</div><div class="line">Content-Type: text/plain; charset=UTF-8</div><div class="line">Content-Length: 0</div></pre></td></tr></table></figure></p>
+<p>不存在的时候<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl -XHEAD -i http://localhost:9200/megacorp/employee/AVW0Wt8KcOHvGZKOW9P5                                                                        </div><div class="line">HTTP/1.1 404 Not Found</div><div class="line">Content-Type: text/plain; charset=UTF-8</div><div class="line">Content-Length: 0</div></pre></td></tr></table></figure></p>
+<p>也能附带routing参数,指定路由<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">curl</span> -XDELETE <span class="string">'http://localhost:9200/twitter/tweet/1?routing=kimchy'</span></div></pre></td></tr></table></figure></p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/07/01/elasticsearch-4/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/01/elasticsearch-4/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/01/elasticsearch-3/" title="《四》elasticsearch_根据id获取数据" itemprop="url">《四》elasticsearch_根据id获取数据</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-01T07:23:54.000Z" itemprop="datePublished"> 发表于 2016-07-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>根据id获取(id是路径参数)<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET <span class="symbol">http:</span>/<span class="regexp">/localhost:9200/megacorp</span><span class="regexp">/employee/</span>AVW0Wt8KcOHvGZKOW9P4</div></pre></td></tr></table></figure></p>
+<p>返回</p>
+<blockquote>
+<p>完整返回包含索引，类型，id，版本，查找状态和和我们的文档(_source)</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"_index"</span>: <span class="string">"megacorp"</span>,</div><div class="line">  <span class="attr">"_type"</span>: <span class="string">"employee"</span>,</div><div class="line">  <span class="attr">"_id"</span>: <span class="string">"AVW0Wt8KcOHvGZKOW9P4"</span>,</div><div class="line">  <span class="attr">"_version"</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">"found"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"_source"</span>: &#123;</div><div class="line">    <span class="attr">"first_name"</span>: <span class="string">"sitec"</span>,</div><div class="line">    <span class="attr">"last_name"</span>: <span class="string">"cc"</span>,</div><div class="line">    <span class="attr">"age"</span>: <span class="number">28</span>,</div><div class="line">    <span class="attr">"about"</span>: <span class="string">"I love music"</span>,</div><div class="line">    <span class="attr">"interests"</span>: [</div><div class="line">      <span class="string">"sports"</span>,</div><div class="line">      <span class="string">"music"</span></div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以设置类型为<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -XGET <span class="symbol">http:</span>/<span class="regexp">/localhost:9200/megacorp</span><span class="regexp">/_all/</span>AVW0Wt8KcOHvGZKOW9P4</div></pre></td></tr></table></figure></p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/07/01/elasticsearch-3/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/01/elasticsearch-3/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/01/elasticsearch-2/" title="《三》elasticsearch_索引操作" itemprop="url">《三》elasticsearch_索引操作</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-01T07:17:37.000Z" itemprop="datePublished"> 发表于 2016-07-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p> 文中代码都能在Terminal中运行</p>
+</blockquote>
+<h2 id="put添加的方式"><a href="#put添加的方式" class="headerlink" title="put添加的方式"></a>put添加的方式</h2><p>这种方法如果不存在就新增，存在就修改<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">curl -XPUT 'http://localhost:9200/megacorp/employee/1' -d '&#123;</div><div class="line">    "first_name" : "John",</div><div class="line">    "last_name" :  "Smith",</div><div class="line">    "age" :        25,</div><div class="line">    "about" :      "I love to go rock climbing",</div><div class="line">    "interests": [ "sports", "music" ]</div><div class="line">&#125;'</div></pre></td></tr></table></figure></p>
+<h2 id="post自动生成id插入"><a href="#post自动生成id插入" class="headerlink" title="post自动生成id插入"></a>post自动生成id插入</h2><p>如果最后的id不输入会是自增的方式插入,发送方式为<code>post</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">curl -XPOST 'http://localhost:9200/megacorp/employee' -d'&#123;</div><div class="line">    "first_name" : "sitec",</div><div class="line">    "last_name" :  "cc",</div><div class="line">    "age" :        28,</div><div class="line">    "about" :      "I love music",</div><div class="line">    "interests": [ "sports", "music" ]</div><div class="line">&#125;'</div></pre></td></tr></table></figure></p>
+<p>返回<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"_index"</span>: <span class="string">"megacorp"</span>,</div><div class="line">  <span class="attr">"_type"</span>: <span class="string">"employee"</span>,</div><div class="line">  <span class="attr">"_id"</span>: <span class="string">"AVWlVVGvcOHvGZKOW1vW"</span>,</div><div class="line">  <span class="attr">"_version"</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">"_shards"</span>: &#123;</div><div class="line">    <span class="attr">"total"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"successful"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"failed"</span>: <span class="number">0</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"created"</span>: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>根据返回id查询下上面插入的内容<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="symbol">http:</span>/<span class="regexp">/localhost:9200/megacorp</span><span class="regexp">/employee/</span>AVWlVVGvcOHvGZKOW1vW</div></pre></td></tr></table></figure></p>
+<h2 id="查询索引信息"><a href="#查询索引信息" class="headerlink" title="查询索引信息"></a>查询索引信息</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="string">http:</span><span class="comment">//localhost:9200/megacorp/?pretty</span></div></pre></td></tr></table></figure>
+<h2 id="指定routing"><a href="#指定routing" class="headerlink" title="指定routing"></a>指定routing</h2><p>elasticsearch默认存储的文档是根据id值hash分布到分片上，当没指定routing的时候，会从所有分片都进行查询，然后合并汇总的结果，如果指定了routing,那么就只在指定的分片进行查询，可以提高效率。</p>
+<p>指定routing新增数据<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">curl -XPOST <span class="symbol">'http</span>://localhost:<span class="number">9200</span>/twitter/tweet?routing=kimchy2' -d '&#123;</div><div class="line">    <span class="string">"user"</span> : "<span class="type">kimchy22</span><span class="string">",</span></div><div class="line">    "post_date<span class="string">" : "</span><span class="number">2009</span>-<span class="number">11</span>-<span class="number">15</span>T14:<span class="number">12</span>:<span class="number">12</span><span class="string">",</span></div><div class="line">    "message<span class="string">" : "</span>trying <span class="keyword">out</span> Elasticsearch<span class="string">"</span></div><div class="line">&#125;'</div></pre></td></tr></table></figure></p>
+<p>根据指定的routing查询数据(后面有单独章节讲查询)<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">curl</span> <span class="string">'http://localhost:9200/twitter/tweet/_search?q=trying&amp;routing=kimchy2'</span></div></pre></td></tr></table></figure></p>
+<h2 id="父类索引"><a href="#父类索引" class="headerlink" title="父类索引"></a>父类索引</h2><p>子类文档创建的时候可以指定参考父类索引,指定之后子文档的routing值跟父文档相同</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl -XPUT <span class="symbol">'http</span>:<span class="comment">//localhost:9200/twitter/tweet/1122?parent=AVW0cy-dcOHvGZKOW9wP' -d '&#123;</span></div><div class="line">    <span class="string">"tag"</span> : <span class="string">"something"</span></div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+<h2 id="被弃用的属性"><a href="#被弃用的属性" class="headerlink" title="被弃用的属性"></a>被弃用的属性</h2><p><code>Timestamp</code>,<code>TTL</code></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html" target="_blank" rel="external">https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/01/elasticsearch-2/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/01/github-star/" title="github-star" itemprop="url">github-star</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-01T05:59:58.000Z" itemprop="datePublished"> 发表于 2016-07-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul>
+<li><a href="https://github.com/jkbrzt/httpie" target="_blank" rel="external">http命令行工具httpie</a></li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/github/">github</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/01/github-star/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/01/elasticsearch-bash/" title="《二》elasticsearch_基本概念" itemprop="url">《二》elasticsearch_基本概念</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-01T05:04:12.000Z" itemprop="datePublished"> 发表于 2016-07-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">R<span class="function"><span class="title">elational</span> DB -&gt;</span> D<span class="function"><span class="title">atabases</span> -&gt;</span> T<span class="function"><span class="title">ables</span> -&gt;</span> Rows</div><div class="line">E<span class="function"><span class="title">lasticsearch</span> -&gt;</span> _<span class="function"><span class="title">index</span>   -&gt;</span> _<span class="function"><span class="title">type</span>  -&gt;</span> Documents</div></pre></td></tr></table></figure>
+<h2 id="近实时-NRT"><a href="#近实时-NRT" class="headerlink" title="近实时(NRT)"></a>近实时(NRT)</h2><p>elasticsearch是个近实时的搜索平台，意味着从索引文件变成可搜索的会一花点时间（通常是1秒）</p>
+<h2 id="集群-cluster"><a href="#集群-cluster" class="headerlink" title="集群(cluster)"></a>集群(cluster)</h2><p>集群是多个节点的集合，集群还提供所有节点的联合索引和搜索功能。<br>集群有唯一的名称指定，默认的集群名称是(<code>elasticsearch</code>),集群的名称很重要，节点靠集群的名字加入到集群</p>
+<h2 id="节点-node"><a href="#节点-node" class="headerlink" title="节点(node)"></a>节点(node)</h2><p>节点是一个独立的服务，是集群中的一个组成部分。<br>节点可以配置加入到指定的集群名称中，默认情况下，每个节点都加入到名称为<code>elasticsearch</code>的集群中。</p>
+<h2 id="索引-index"><a href="#索引-index" class="headerlink" title="(索引)index"></a>(索引)index</h2><p>一组有稍微类似特征的文档(documents)的集合，由名字标示，名字必需全小写，类似database</p>
+<h2 id="类型-Type"><a href="#类型-Type" class="headerlink" title="类型(Type)"></a>类型(Type)</h2><p>，用户数据类型的定义,类似table</p>
+<h2 id="文档-Document"><a href="#文档-Document" class="headerlink" title="文档(Document)"></a>文档(Document)</h2><p>文档就是查询出来的信息数据，文档以json格式来表示。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">例如</div><div class="line">http:<span class="comment">//localhost:9200/megacorp/employee/AVW0Wt8KcOHvGZKOW9P4</span></div><div class="line">megacorp 表示索引</div><div class="line">employee 表示类型</div><div class="line"><span class="built_in">AVW0Wt8KcOHvGZKOW9P4</span> 表示具体文档对应的<span class="keyword">id</span></div></pre></td></tr></table></figure></p>
+<h2 id="分片-Shards-amp-复制分片-Replicas"><a href="#分片-Shards-amp-复制分片-Replicas" class="headerlink" title="(分片)Shards &amp; (复制分片)Replicas"></a>(分片)Shards &amp; (复制分片)Replicas</h2><p>当一个索引占用太多的大小的时候，存储会不够用，搜索也会变得很慢，为了解决这个问题，es提供了分片方法，当你创建索引(index)的时候，你可以定义分片的数量，每个分片都是一个独立的，全功能的索引(index)，它可以托管在集群的任何节点上</p>
+<h2 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a><a href="https://zh.wikipedia.org/wiki/倒排索引" target="_blank" rel="external">倒排索引</a></h2><p><img src="https://www.elastic.co/guide/en/elasticsearch/guide/current/images/elas_1103.png" alt="shards"></p>
+<p>传统数据库一个字段存一个值，这样对全文搜索来说是不够的，想要让文本中每个单词都能搜索，这需要数据库存多个值。支持一个字段多个值的最佳数据结构是倒排索引。倒排索引包含了出现在所有文档中唯一的值或词的有序列表，以及每个词所属的文档列表。</p>
+<p>全文索引初始的时候为所有文档集合建立一个大索引，保存到磁盘，es中写入磁盘的<code>索引是不可变的</code>，是如何在保持不可变好处的同时更新倒排索引。答案是，使用<code>多个索引</code>。在文档改变的时候会建立新的索引，查询的时候会查处所有索引的聚合。新增的时候，建立的文档会写到缓存，缓存一段时间之后提交成新的索引写入磁盘。删除的时候，会把文档标记成已经删除状态，修改的时候，把旧文档标记成删除，新文档添加到新索引。标记为删除的会在查询返回之前会被从结果中删除。</p>
+<p>默认情况下，写入到磁盘是比较消耗性能的，位于Elasticsearch和磁盘间的是文件系统缓存，默认配置<br>每个分片每秒自动刷新一次，将新的段从内存缓存写入文件系统缓存，文档的改动不会立即被搜索，但是会在一秒内可见，</p>
+<p>当一个文档被索引，它被加入到内存缓存，同时加到事务日志，当故障重启后，ES会用最近一次提交点从硬盘恢复所有已知的段，并且从日志里恢复所有的操作，分片每30分钟（可配置），或事务日志过大会进行一次flush操作,将所有文件缓存文档写入到硬盘，然后清除事物日止。</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html#_index" target="_blank" rel="external">https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html#_index</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/07/01/elasticsearch-bash/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/06/30/elasticsearch/" title="《一》elasticsearch_安装" itemprop="url">《一》elasticsearch_安装</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
+		
+  <p class="article-time">
+    <time datetime="2016-06-30T08:37:06.000Z" itemprop="datePublished"> 发表于 2016-06-30</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="理论-amp-作用"><a href="#理论-amp-作用" class="headerlink" title="理论&amp;作用"></a>理论&amp;作用</h2><p>Elasticsearch是一个实时分布式搜索和分析引擎。用于全文搜索、结构化搜索、分析以及将这三者混合使用，支持通过 HTTP 请求，使用 JSON 进行数据索引。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/06/30/elasticsearch/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/elasticsearch/">elasticsearch</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/06/30/elasticsearch/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/elasticsearch/" title="elasticsearch">elasticsearch<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mac/" title="mac">mac<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="tianjun">tianjun</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

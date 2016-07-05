@@ -2,65 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.sitec.cc/timeline/index.html</loc>
+    <loc>http://www.sitec.cc/2016/07/04/elasticsearch-9/</loc>
     
-    <lastmod>2016-07-04T08:26:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitec.cc/2016/06/30/elasticsearch/</loc>
-    
-    <lastmod>2016-07-04T08:13:29.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitec.cc/2016/07/04/elasticsearch-7/</loc>
-    
-    <lastmod>2016-07-04T07:54:46.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitec.cc/2016/07/04/elasticsearch-6/</loc>
-    
-    <lastmod>2016-07-04T07:54:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitec.cc/2016/07/01/elasticsearch-5/</loc>
-    
-    <lastmod>2016-07-04T07:54:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitec.cc/2016/07/01/elasticsearch-4/</loc>
-    
-    <lastmod>2016-07-04T07:54:17.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitec.cc/2016/07/01/elasticsearch-3/</loc>
-    
-    <lastmod>2016-07-04T07:54:06.000Z</lastmod>
+    <lastmod>2016-07-05T09:00:22.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.sitec.cc/2016/07/01/elasticsearch-bash/</loc>
     
-    <lastmod>2016-07-04T07:53:51.000Z</lastmod>
+    <lastmod>2016-07-05T08:09:25.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.sitec.cc/2016/07/01/elasticsearch-2/</loc>
     
-    <lastmod>2016-07-04T07:53:43.000Z</lastmod>
+    <lastmod>2016-07-05T06:19:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitec.cc/2016/07/03/elasticsearch-7/</loc>
+    
+    <lastmod>2016-07-05T02:55:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitec.cc/2016/07/04/elasticsearch-8/</loc>
+    
+    <lastmod>2016-07-05T02:54:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitec.cc/2016/07/01/elasticsearch-3/</loc>
+    
+    <lastmod>2016-07-05T02:21:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitec.cc/2016/07/01/elasticsearch-5/</loc>
+    
+    <lastmod>2016-07-05T02:09:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitec.cc/2016/06/30/elasticsearch/</loc>
+    
+    <lastmod>2016-07-04T09:36:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitec.cc/2016/07/01/elasticsearch-4/</loc>
+    
+    <lastmod>2016-07-04T09:19:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitec.cc/timeline/index.html</loc>
+    
+    <lastmod>2016-07-04T08:26:52.000Z</lastmod>
     
   </url>
   
@@ -75,13 +82,6 @@
     <loc>http://www.sitec.cc/tags/index.html</loc>
     
     <lastmod>2016-07-04T06:28:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitec.cc/tag/index.html</loc>
-    
-    <lastmod>2016-07-04T06:21:45.000Z</lastmod>
     
   </url>
   
