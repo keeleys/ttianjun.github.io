@@ -1,27 +1,18 @@
 ---
-title: 学习elasticsearch
+title: 《一》elasticsearch_安装
 date: 2016-06-30 16:37:06
-tags:
+tags: elasticsearch
 ---
 
-###  搜索
-* 首先就是搜集资料把，优先搜集gitbook翻译的原版资料，有个系统的映像，然后个别不清楚的在看英文资料(毕竟英语水平差)
-[elasticsearch](https://github.com/looly/elasticsearch-definitive-guide-cn)
-[marvel](http://kibana.logstash.es/content/elasticsearch/monitor/marvel.html)
+## 理论&作用
+Elasticsearch是一个实时分布式搜索和分析引擎。用于全文搜索、结构化搜索、分析以及将这三者混合使用，支持通过 HTTP 请求，使用 JSON 进行数据索引。
 
-### 理论&作用
-Elasticsearch是一个实时分布式搜索和分析引擎。它让你以前所未有的速度处理大数据成为可能。
-它用于全文搜索、结构化搜索、分析以及将这三者混合使用
+<!-- more -->
 
-```
-Relational DB -> Databases -> Tables -> Rows -> Columns
-Elasticsearch -> Indices   -> Types  -> Documents -> Fields
-```
+## 安装
+> 运行依赖java7以上,默认你已经安装过java了
 
-### 安装然后跑起来看看
-默认你已经安装过java了
-
-#### 安装Elasticsearch
+### 安装Elasticsearch
 ```
 brew update
 brew install elasticsearch
@@ -38,56 +29,56 @@ To have launchd start elasticsearch now and restart at login:
   brew services start elasticsearch
 Or, if you don't want/need a background service you can just run:
   elasticsearch
+```
+启动es,根据上面的提示 直接命令行运行`elasticsearch`.
 
+检查，访问如下url会返回一串json的安装信息
+```
+curl -XGET 'http://localhost:9200'
+```
+### 安装Kibana
+> Kibana ,查看和可视化您的数据,Kibana是一个开源的可视化平台，有很多图形化，仪表盘帮助分析数据
+
+1. [官网直接下载](https://download.elastic.co/kibana/kibana/kibana-4.5.1-darwin-x64.tar.gz)
+
+2. 解压之后，查看`config/kibana.yml`配置文件,设置`elasticsearch.url`指定到您运行的Elasticsearch 实现,默认是 `http://localhost:9200`
+
+3. Run `./bin/kibana` (or `bin\kibana.bat` on Windows)
+
+### [安装Marvel](https://www.elastic.co/downloads/marvel)
+> Marvel帮助分析和优化Elasticsearch性能，快速诊断问题,它是以插件的方式安装的.
+
+1. 安装Marvel到Elasticsearch
+```
+/usr/local/Cellar/elasticsearch/2.3.2/libexec/bin/plugin install license
+/usr/local/Cellar/elasticsearch/2.3.2/libexec/bin/plugin bin/plugin install marvel-agent
 ```
 
-#### 安装Marvel
-根据上面的安装反馈得到的脚本路径安装
-
+2. 安装Marvel到Kibana,在kibana的根目录运行
 ```
-/usr/local/Cellar/elasticsearch/2.3.2/libexec/bin/plugin install elasticsearch/marvel/latest
+bin/kibana plugin --install elasticsearch/marvel/latest
 ```
 
-安装之后会出错
-```
-> /usr/local/Cellar/elasticsearch/2.3.2/libexec/bin/plugin install elasticsearch/marvel/latest                                      source [9dd457e] untracked
--> Installing elasticsearch/marvel/latest...
-Trying https://download.elastic.co/elasticsearch/marvel/marvel-latest.zip ...
-Trying https://search.maven.org/remotecontent?filepath=elasticsearch/marvel/latest/marvel-latest.zip ...
-Trying https://oss.sonatype.org/service/local/repositories/releases/content/elasticsearch/marvel/latest/marvel-latest.zip ...
-Trying https://github.com/elasticsearch/marvel/archive/latest.zip ...
-Trying https://github.com/elasticsearch/marvel/archive/master.zip ...
-ERROR: failed to download out of all possible locations..., use --verbose to get detailed information
-```
+3. Run `./bin/kibana` (or `bin\kibana.bat` on Windows)
 
-查找资料之后手动下载
-[stackoverflow问题](http://stackoverflow.com/questions/23604868/install-marvel-plugin-for-elasticsearch)
-下载到本地之后 继续安装还是不行
-```  
-Plugins can be installed from a custom URL or file location as follows:
-plugin install http://some.domain.name//my-plugin-1.0.0.zip
-plugin install file:/path/to/my-plugin-1.0.0.zip
-```
+4. 在浏览器打开 http://localhost:5601/app/marvel
 
-最后参考官网安装完美运行了，Marvel1，3和Marvel2还是有区别的。
-[https://www.elastic.co/downloads/marvel](https://www.elastic.co/downloads/marvel)
+
 ![marvel-pic](https://dn-keeley.qbox.me/2016-07-01_QQ20160701-0@2x.png)
+
+### 配置
+编辑 /usr/local/etc/elasticsearch/elasticsearch.yml文件，末尾增加三行。开启Groovy脚本，然后重启elasticsearch,后面会用到.
+```
+script.inline: on
+script.indexed: on
+script.file: on
+```
 
 ### 使用
 ![2016-07-01_QQ20160701-1@2x.png](https://dn-keeley.qbox.me/2016-07-01_QQ20160701-1@2x.png)
-```
-put http://localhost:9200/megacorp/employee/3
-{
-    "first_name" :  "Douglas",
-    "last_name" :   "Fir",
-    "age" :         35,
-    "about":        "I like to build cabinets",
-    "interests":  [ "forestry" ]
-}
-```
 
-查询
-```
-http://localhost:9200/megacorp/employee/1
-http://localhost:9200/megacorp/employee/_search?q=last_name:Smith
-```
+
+
+### 参考
+* [http://es.xiaoleilu.com,版本有点落后仅供参考](http://es.xiaoleilu.com)
+* [https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)
