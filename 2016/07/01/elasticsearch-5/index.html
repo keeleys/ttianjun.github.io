@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>《六》elasticsearch_更新和版本控制 | sitec.cc</title>
+    <title>《六》elasticsearch_更新和版本控制 | tianj@zhixueyun.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="tianjun">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="《六》elasticsearch_更新和版本控制">
 <meta property="og:url" content="http://www.sitec.cc/2016/07/01/elasticsearch-5/index.html">
-<meta property="og:site_name" content="sitec.cc">
+<meta property="og:site_name" content="tianj@zhixueyun.com">
 <meta property="og:description" content="关于version在post put 等操作中，我们可以看到返回的json都有_version字段，elasticsearch就是根据version来进行并发处理的，每次操作数据version都会自增一次，如果其他程序修改了数据，那么当前数据拿到的版本肯定是低于最新版本的，低于最新版本的更新将不会成功，这样达到事物控制。
 实践先查询一个数据看看，得到版本号是3.1curl -XGET http:/">
 <meta property="og:updated_time" content="2016-07-05T02:09:45.000Z">
@@ -26,7 +26,7 @@
 实践先查询一个数据看看，得到版本号是3.1curl -XGET http:/">
 
     
-    <link rel="alternative" href="/atom.xml" title="sitec.cc" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="tianj@zhixueyun.com" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -44,10 +44,10 @@
 <div>
 		
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="sitec.cc">sitec.cc</a></h1>
-				<h2 class="blog-motto">the study</h2>
+				<h1 class="site-name"><a href="/" title="tianj@zhixueyun.com">tianj@zhixueyun.com</a></h1>
+				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -63,7 +63,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:www.sitec.cc">
 					</form>
 					
@@ -86,14 +86,14 @@
 		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
 		
   <p class="article-time">
-    <time datetime="2016-07-01T08:05:08.000Z" itemprop="datePublished"> Published 2016-07-01</time>
+    <time datetime="2016-07-01T08:05:08.000Z" itemprop="datePublished"> 發表於 2016-07-01</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于version"><span class="toc-number">1.</span> <span class="toc-text">关于version</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践"><span class="toc-number">2.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局部更新"><span class="toc-number">3.</span> <span class="toc-text">局部更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备数据"><span class="toc-number">3.1.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用参数更新"><span class="toc-number">3.2.</span> <span class="toc-text">使用参数更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Groovy进行更新"><span class="toc-number">3.3.</span> <span class="toc-text">使用Groovy进行更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根据查询结果更新"><span class="toc-number">4.</span> <span class="toc-text">根据查询结果更新</span></a></li></ol>
 		
@@ -141,7 +141,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://www.sitec.cc/2016/07/01/elasticsearch-5/" data-title="《六》elasticsearch_更新和版本控制 | sitec.cc" data-tsina="null" class="share clearfix">
+	  <div data-url="http://www.sitec.cc/2016/07/01/elasticsearch-5/" data-title="《六》elasticsearch_更新和版本控制 | tianj@zhixueyun.com" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -182,17 +182,17 @@
 </section>
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于version"><span class="toc-number">1.</span> <span class="toc-text">关于version</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践"><span class="toc-number">2.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局部更新"><span class="toc-number">3.</span> <span class="toc-text">局部更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备数据"><span class="toc-number">3.1.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用参数更新"><span class="toc-number">3.2.</span> <span class="toc-text">使用参数更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Groovy进行更新"><span class="toc-number">3.3.</span> <span class="toc-text">使用Groovy进行更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根据查询结果更新"><span class="toc-number">4.</span> <span class="toc-text">根据查询结果更新</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
@@ -202,7 +202,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
@@ -234,7 +234,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -484,7 +484,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

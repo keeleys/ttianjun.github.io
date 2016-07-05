@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>《二》elasticsearch_基本概念 | sitec.cc</title>
+    <title>《二》elasticsearch_基本概念 | tianj@zhixueyun.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="tianjun">
@@ -17,7 +17,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="《二》elasticsearch_基本概念">
 <meta property="og:url" content="http://www.sitec.cc/2016/07/01/elasticsearch-bash/index.html">
-<meta property="og:site_name" content="sitec.cc">
+<meta property="og:site_name" content="tianj@zhixueyun.com">
 <meta property="og:description" content="12Relational DB -&amp;gt; Databases -&amp;gt; Tables -&amp;gt; RowsElasticsearch -&amp;gt; _index   -&amp;gt; _type  -&amp;gt; Documents
 近实时(NRT)elasticsearch是个近实时的搜索平台，意味着从索引文件变成可搜索的会一花点时间（通常是1秒）
 集群(cluster)集群是多个节点的集合，集群还提供">
@@ -31,7 +31,7 @@
 <meta name="twitter:image" content="https://www.elastic.co/guide/en/elasticsearch/guide/current/images/elas_1103.png">
 
     
-    <link rel="alternative" href="/atom.xml" title="sitec.cc" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="tianj@zhixueyun.com" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -49,10 +49,10 @@
 <div>
 		
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="sitec.cc">sitec.cc</a></h1>
-				<h2 class="blog-motto">the study</h2>
+				<h1 class="site-name"><a href="/" title="tianj@zhixueyun.com">tianj@zhixueyun.com</a></h1>
+				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -68,7 +68,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:www.sitec.cc">
 					</form>
 					
@@ -91,14 +91,14 @@
 		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
 		
   <p class="article-time">
-    <time datetime="2016-07-01T05:04:12.000Z" itemprop="datePublished"> Published 2016-07-01</time>
+    <time datetime="2016-07-01T05:04:12.000Z" itemprop="datePublished"> 發表於 2016-07-01</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#近实时-NRT"><span class="toc-number">1.</span> <span class="toc-text">近实时(NRT)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集群-cluster"><span class="toc-number">2.</span> <span class="toc-text">集群(cluster)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点-node"><span class="toc-number">3.</span> <span class="toc-text">节点(node)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引-index"><span class="toc-number">4.</span> <span class="toc-text">(索引)index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型-Type"><span class="toc-number">5.</span> <span class="toc-text">类型(Type)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文档-Document"><span class="toc-number">6.</span> <span class="toc-text">文档(Document)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分片-Shards-amp-复制分片-Replicas"><span class="toc-number">7.</span> <span class="toc-text">(分片)Shards & (复制分片)Replicas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#倒排索引"><span class="toc-number">8.</span> <span class="toc-text">倒排索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">9.</span> <span class="toc-text">参考文档</span></a></li></ol>
 		
@@ -135,7 +135,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://www.sitec.cc/2016/07/01/elasticsearch-bash/" data-title="《二》elasticsearch_基本概念 | sitec.cc" data-tsina="null" class="share clearfix">
+	  <div data-url="http://www.sitec.cc/2016/07/01/elasticsearch-bash/" data-title="《二》elasticsearch_基本概念 | tianj@zhixueyun.com" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -176,17 +176,17 @@
 </section>
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#近实时-NRT"><span class="toc-number">1.</span> <span class="toc-text">近实时(NRT)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集群-cluster"><span class="toc-number">2.</span> <span class="toc-text">集群(cluster)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点-node"><span class="toc-number">3.</span> <span class="toc-text">节点(node)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引-index"><span class="toc-number">4.</span> <span class="toc-text">(索引)index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型-Type"><span class="toc-number">5.</span> <span class="toc-text">类型(Type)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文档-Document"><span class="toc-number">6.</span> <span class="toc-text">文档(Document)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分片-Shards-amp-复制分片-Replicas"><span class="toc-number">7.</span> <span class="toc-text">(分片)Shards & (复制分片)Replicas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#倒排索引"><span class="toc-number">8.</span> <span class="toc-text">倒排索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">9.</span> <span class="toc-text">参考文档</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
@@ -196,7 +196,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
@@ -228,7 +228,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -478,7 +478,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
