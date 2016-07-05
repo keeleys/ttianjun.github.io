@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>《三》elasticsearch_索引操作 | tianjun</title>
+    <title>《三》elasticsearch_索引操作 | sitec.cc</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="tianjun">
@@ -17,7 +17,7 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 <meta property="og:type" content="article">
 <meta property="og:title" content="《三》elasticsearch_索引操作">
 <meta property="og:url" content="http://www.sitec.cc/2016/07/01/elasticsearch-2/index.html">
-<meta property="og:site_name" content="tianjun">
+<meta property="og:site_name" content="sitec.cc">
 <meta property="og:description" content="文中代码都能在Terminal中运行
 
 put添加的方式这种方法如果不存在就新增，存在就修改1234567curl -XPUT &apos;http://localhost:9200/megacorp/employee/1&apos; -d &apos;&amp;#123;    &quot;first_name&quot; : &quot;John&quot;,    &quot;last_name&quot; :  &quot;Smith&quot;,    &quot;age&quot; :        25,    &quot;">
@@ -29,7 +29,7 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 put添加的方式这种方法如果不存在就新增，存在就修改1234567curl -XPUT &apos;http://localhost:9200/megacorp/employee/1&apos; -d &apos;&amp;#123;    &quot;first_name&quot; : &quot;John&quot;,    &quot;last_name&quot; :  &quot;Smith&quot;,    &quot;age&quot; :        25,    &quot;">
 
     
-    <link rel="alternative" href="/atom.xml" title="tianjun" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="sitec.cc" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -47,10 +47,10 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 <div>
 		
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="tianjun">tianjun</a></h1>
+				<h1 class="site-name"><a href="/" title="sitec.cc">sitec.cc</a></h1>
 				<h2 class="blog-motto">the study</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -66,7 +66,7 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:www.sitec.cc">
 					</form>
 					
@@ -89,14 +89,14 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 		<a href="/about" title="tianjun" target="_blank" itemprop="author">tianjun</a>
 		
   <p class="article-time">
-    <time datetime="2016-07-01T07:17:37.000Z" itemprop="datePublished"> 发表于 2016-07-01</time>
+    <time datetime="2016-07-01T07:17:37.000Z" itemprop="datePublished"> Published 2016-07-01</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#put添加的方式"><span class="toc-number">1.</span> <span class="toc-text">put添加的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#post自动生成id插入"><span class="toc-number">2.</span> <span class="toc-text">post自动生成id插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询索引信息"><span class="toc-number">3.</span> <span class="toc-text">查询索引信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定routing"><span class="toc-number">4.</span> <span class="toc-text">指定routing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#父类索引"><span class="toc-number">5.</span> <span class="toc-text">父类索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#被弃用的属性"><span class="toc-number">6.</span> <span class="toc-text">被弃用的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">7.</span> <span class="toc-text">参考文档</span></a></li></ol>
 		
@@ -134,7 +134,7 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://www.sitec.cc/2016/07/01/elasticsearch-2/" data-title="《三》elasticsearch_索引操作 | tianjun" data-tsina="null" class="share clearfix">
+	  <div data-url="http://www.sitec.cc/2016/07/01/elasticsearch-2/" data-title="《三》elasticsearch_索引操作 | sitec.cc" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -157,9 +157,9 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 
 
 <div class="next">
-<a href="/2016/07/01/github-star/"  title="github-star">
+<a href="/2016/07/01/elasticsearch-bash/"  title="《二》elasticsearch_基本概念">
  <strong>下一篇：</strong><br/> 
- <span>github-star
+ <span>《二》elasticsearch_基本概念
 </span>
 </a>
 </div>
@@ -175,17 +175,17 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 </section>
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#put添加的方式"><span class="toc-number">1.</span> <span class="toc-text">put添加的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#post自动生成id插入"><span class="toc-number">2.</span> <span class="toc-text">post自动生成id插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询索引信息"><span class="toc-number">3.</span> <span class="toc-text">查询索引信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定routing"><span class="toc-number">4.</span> <span class="toc-text">指定routing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#父类索引"><span class="toc-number">5.</span> <span class="toc-text">父类索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#被弃用的属性"><span class="toc-number">6.</span> <span class="toc-text">被弃用的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">7.</span> <span class="toc-text">参考文档</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -195,7 +195,7 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -227,7 +227,7 @@ put添加的方式这种方法如果不存在就新增，存在就修改1234567c
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -477,7 +477,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

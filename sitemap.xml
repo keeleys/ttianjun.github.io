@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.sitec.cc/2016/06/27/github-star/</loc>
+    
+    <lastmod>2016-07-05T09:03:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.sitec.cc/2016/07/04/elasticsearch-9/</loc>
     
     <lastmod>2016-07-05T09:00:22.000Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://www.sitec.cc/2016/06/30/github-request/</loc>
     
     <lastmod>2016-07-01T07:02:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitec.cc/2016/07/01/github-star/</loc>
-    
-    <lastmod>2016-07-01T06:01:06.000Z</lastmod>
     
   </url>
   
